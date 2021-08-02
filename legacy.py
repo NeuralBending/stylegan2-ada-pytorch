@@ -313,6 +313,11 @@ def convert_network_pickle(source, dest, force_fp16):
     print('Done.')
 
 #----------------------------------------------------------------------------
+def load_generator(network_pkl):
+    with dnnlib.util.open_url(network_pkl) as f:
+        G = load_network_pkl(f)['G_ema'].to('cuda')
+    return G
+
 
 if __name__ == "__main__":
     convert_network_pickle() # pylint: disable=no-value-for-parameter
