@@ -124,7 +124,8 @@ landmarks_model_path = unpack_bz2(get_file('shape_predictor_68_face_landmarks.da
 landmarks_detector = LandmarksDetector(landmarks_model_path)
 
 def face_align(img_path, out_path):
+  name = img_path.split('/')[-1][:-4]
   landmarks_model_path = unpack_bz2(get_file('shape_predictor_68_face_landmarks.dat.bz2', LANDMARKS_MODEL_URL, cache_subdir='temp'))
   landmarks_detector = LandmarksDetector(landmarks_model_path)
-  for i in landmarks_detector.get_landmarks(img_path):
-    image_align(img_path,out_path, i)
+  for e,i in enumerate(landmarks_detector.get_landmarks(img_path)):
+    image_align(img_path,"%s_croped%d.png"%(name,e), i)
