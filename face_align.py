@@ -123,7 +123,7 @@ def image_align(src_file, dst_file, face_landmarks, output_size=1024, transform_
 landmarks_model_path = unpack_bz2(get_file('shape_predictor_68_face_landmarks.dat.bz2', LANDMARKS_MODEL_URL, cache_subdir='temp'))
 landmarks_detector = LandmarksDetector(landmarks_model_path)
 
-def face_align(img_path, out_path):
+def face_align(img_path):
   name = img_path.split('/')[-1][:-4]
   landmarks_model_path = unpack_bz2(get_file('shape_predictor_68_face_landmarks.dat.bz2', LANDMARKS_MODEL_URL, cache_subdir='temp'))
   landmarks_detector = LandmarksDetector(landmarks_model_path)
